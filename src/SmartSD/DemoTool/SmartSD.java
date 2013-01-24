@@ -1,16 +1,10 @@
 package SmartSD.DemoTool;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.io.InputStream;
+import info.dreamingfish.util.codec.Base64;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.UnknownHostException;
-
 import Incomm.Library.SmartSDLib;
 import SmartSD.DemoTool.R;
 import android.app.Activity;
@@ -18,8 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.telephony.gsm.SmsManager;
-import android.telephony.gsm.SmsMessage;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,6 +28,9 @@ public class SmartSD extends Activity {
 	public static final char FixedDataLength = 1;
 
 	public static SmartSD instance = null;
+
+	private static char[] _l_ = new char[] { 0x13, 0xa3, 0xa6, 0x32, 0x0b,
+			0x0d, 0x69, 0xd7 };
 
 	SmartSDLib SDLib = new SmartSDLib();
 
@@ -134,9 +130,13 @@ public class SmartSD extends Activity {
 						.toString());
 				if (cRet == 0x00) {
 					strRet.append("Initial OK!!\n");
+					Log.d("SD", "Initial OK!!\n");
 				} else {
 					strRet.append("Initial FAIL!!\n" + strErr
 							+ Integer.toHexString(cRet) + "\n");
+					Log.d("SD",
+							"Initial FAIL!!\n" + strErr
+									+ Integer.toHexString(cRet) + "\n");
 				}
 
 				updateStatus(strRet);
@@ -152,9 +152,13 @@ public class SmartSD extends Activity {
 				if (cRet == 0x00) {
 					strRet.append("Reset OK!!\n"
 							+ To_Hex(cData, intAPDU_len[0]));
+					Log.d("SD", "Reset OK!!\n:" + To_Hex(cData, intAPDU_len[0]));
 				} else {
 					strRet.append("Reset FAIL!!\n" + "Err "
 							+ Integer.toHexString(cRet) + "\n");
+					Log.d("SD",
+							"Reset FAIL!!\n" + "Err "
+									+ Integer.toHexString(cRet) + "\n");
 				}
 
 				updateStatus(strRet);
@@ -211,12 +215,16 @@ public class SmartSD extends Activity {
 				strRet.delete(0, strRet.length());
 
 				cRet = SDLib.InCOMM_SmartSDCard_Endtransmission();
-				if (cRet == 0x00)
+				if (cRet == 0x00) {
 					strRet.append("EndTM Done!!\n");
-				else
+					Log.d("SD", "EndTM Done!!\n");
+				} else {
 					strRet.append("EndTM FAIL!!\n" + strErr
 							+ Integer.toHexString(cRet) + "\n");
-
+					Log.d("SD",
+							"EndTM FAIL!!\n" + strErr
+									+ Integer.toHexString(cRet) + "\n");
+				}
 				updateStatus(strRet);
 			}
 		});
@@ -564,21 +572,28 @@ public class SmartSD extends Activity {
 						0x55 };
 
 				cRet = SDLib.InCOMM_SmartSDCard_Reset(intAPDU_len, cData);
-				if (cRet == 0x00)
-					strRet.append("Reset OK!!\n");
-				else {
+				if (cRet == 0x00) {
+					strRet.append("Reset OK!!\n"
+							+ To_Hex(cData, intAPDU_len[0]));
+					Log.d("SD", "Reset OK!!\n:" + To_Hex(cData, intAPDU_len[0]));
+				} else {
 					strRet.append("Reset FAIL!!\n");
+					Log.d("SD", "Reset FAIL!!\n");
 					updateStatus(strRet);
 					cSendData = null;
 					return;
 				}
 
 				cRet = SDLib.InCOMM_SmartSDCard_SendAPDUCommand(8, cSendData);
-				if (cRet == 0x00)
+				if (cRet == 0x00) {
 					strRet.append("Send Cmd OK!!\n");
-				else {
+					Log.d("SD", "Send Cmd OK!!\n");
+				} else {
 					strRet.append("Send Cmd Faill!! Err "
 							+ Integer.toHexString(cRet) + "\n");
+					Log.d("SD",
+							"Send Cmd Faill!! Err " + Integer.toHexString(cRet)
+									+ "\n");
 					updateStatus(strRet);
 					cSendData = null;
 					return;
@@ -586,12 +601,17 @@ public class SmartSD extends Activity {
 
 				cRet = SDLib.InCOMM_SmartSDCard_GetAPDUCommand(intAPDU_len,
 						cData);
-				if (cRet == 0x00)
+				if (cRet == 0x00) {
 					strRet.append("Run App OK!!\n"
 							+ To_Hex(cData, 0, intAPDU_len[0]));
-				else {
+					Log.d("SD",
+							"Run App OK!!\n" + To_Hex(cData, 0, intAPDU_len[0]));
+				} else {
 					strRet.append("Run App FAIL!! Err "
 							+ Integer.toHexString(cRet) + "\n");
+					Log.d("SD",
+							"Run App FAIL!! Err " + Integer.toHexString(cRet)
+									+ "\n");
 					updateStatus(strRet);
 					cSendData = null;
 					return;
@@ -605,18 +625,18 @@ public class SmartSD extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				/* Android 作为Server时使用以下代码 */
+				/* Android 脳梅脦陋Server脢卤脢鹿脫脙脪脭脧脗麓煤脗毛 */
 				/**********************************/
 				strRet.delete(0, strRet.length());
 				try {
-					// 创建服务端ServerSocket对象
+					// 麓麓陆篓路镁脦帽露脣ServerSocket露脭脧贸
 					ServerSocket serverSocket = new ServerSocket(8001);
 
-					// ServerSocket.accept()方法用于等待客服连接
+					// ServerSocket.accept()路陆路篓脫脙脫脷碌脠麓媒驴脥路镁脕卢陆脫
 					while (true) {
 						Socket socket = serverSocket.accept();
 
-						// 获取客服端数据
+						// 禄帽脠隆驴脥路镁露脣脢媒戮脻
 						byte[] cSendData = new byte[512];
 						socket.getInputStream().read(cSendData);
 						String s = bytesToHexString(cSendData);
@@ -625,7 +645,7 @@ public class SmartSD extends Activity {
 						for (int i = 0; i < cSendData.length; i++)
 							c[i] = (char) (0xFF & cSendData[i]);
 
-						// 加密模块
+						// 录脫脙脺脛拢驴茅
 						cIndex = (char) Integer.parseInt(EditTextIndex
 								.getText().toString());
 						cRet = SDLib
@@ -661,7 +681,7 @@ public class SmartSD extends Activity {
 								+ To_Hex(cGetData, 512) + "\n");
 						updateStatus(strRet);
 
-						// 关闭服务连接
+						// 鹿脴卤脮路镁脦帽脕卢陆脫
 						serverSocket.close();
 					}
 				} catch (IOException e) {
@@ -670,16 +690,16 @@ public class SmartSD extends Activity {
 
 				/*********************************************/
 
-				/* Android 作为Client时使用以下代码 */
+				/* Android 脳梅脦陋Client脢卤脢鹿脫脙脪脭脧脗麓煤脗毛 */
 				/**********************************/
 				/*
-				 * try { //创建Socket连接对象 （ip地址，端口）
+				 * try { //麓麓陆篓Socket脕卢陆脫露脭脧贸 拢篓ip碌脴脰路拢卢露脣驴脷拢漏
 				 * updateStatus("try ok"); Socket socket = new
-				 * Socket("192.168.1.193",8001); //PrintWriter发送对象
+				 * Socket("192.168.1.193",8001); //PrintWriter路垄脣脥露脭脧贸
 				 * updateStatus("new sock ok"); PrintWriter printWriter = new
 				 * PrintWriter(new
 				 * OutputStreamWriter(socket.getOutputStream(),"UTF-8"),true);
-				 * //向服务器发送信息
+				 * //脧貌路镁脦帽脝梅路垄脣脥脨脜脧垄
 				 * printWriter.println(EditTextCMD.getText());
 				 * 
 				 * updateStatus("send ok");
@@ -700,17 +720,18 @@ public class SmartSD extends Activity {
 			public void onClick(View v) {
 				strRet.delete(0, strRet.length());
 				try {
-					byte[] cSendData = new byte[512];
-					byte[] smsbody = smsBodyEditText.getText().toString()
-							.getBytes();
-					for (int i = 0; i < (smsbody.length < cSendData.length ? smsbody.length
-							: cSendData.length); i++) {
-						cSendData[i] = smsbody[i];
-					}
+					String oriSmsBody = smsBodyEditText.getText().toString();
+					Log.d("SDM", "Ori:" + oriSmsBody);
 
 					char[] c = new char[512];
-					for (int i = 0; i < cSendData.length; i++)
-						c[i] = (char) (0xFF & cSendData[i]);
+					for (int i = 0; i < 512; i++) {
+						if (i < oriSmsBody.length()) {
+							c[i] = oriSmsBody.charAt(i);
+						} else {
+							c[i] = 0x00;
+						}
+					}
+					Log.d("SDM", "cSendData:" + To_Hex(c, 512));
 
 					cIndex = (char) Integer.parseInt(EditTextIndex.getText()
 							.toString());
@@ -739,29 +760,29 @@ public class SmartSD extends Activity {
 							SPI_END_500_E);
 					cRet = SDLib.InCOMM_SmartSDCard_GetAPDUCommand(intAPDU_len,
 							cData);
-					// char cSendData[] =
-					// bufferedReader.readLine().toCharArray();
-					// cSendData = bufferedReader.readLine().toCharArray();
 
 					String smsBody = To_Hex(cGetData, 512);
 					String smsNumber = smsToEditText.getText().toString();
 
 					strRet.append("To send Message:" + smsBody + "\n");
-					Log.d("SDM", "Ori:" + smsBodyEditText.getText().toString());
-					Log.d("SDM", "Encrypted:" + smsBody);
-					// Log.d("SDM", strRet.toString());
-					// SmsManager sm = SmsManager.getDefault();
-					// sm.sendTextMessage(smsNumber, null, smsBody, null, null);
 
-					// do decrypt here..have a try..
-					byte[] toDe = new byte[512];
-					for (int i = 0; i < 512; i++) {
-						toDe[i] = (byte) (0xff & cGetData[i]);
+					Log.d("SDM", "cGetData:" + smsBody);
+					byte[] cGetByte = new byte[(oriSmsBody.length() / 8 + ((oriSmsBody
+							.length() % 8) == 0 ? 0 : 1)) * 8];
+
+					for (int i = 0; i < cGetByte.length; i++) {
+						cGetByte[i] = (byte) (0xff & cGetData[i]);
 					}
-					String de = decryptData(toDe);
 
-					strRet.append("Str after decrypt:" + de + "\n");
-					Log.d("SDM", "Decrypted:" + de);
+					String toBase64 = Base64.encode(cGetByte);
+
+					Log.d("SDM", "Base64.encode:" + toBase64);
+
+					Log.d("SD", "ToNumber:" + smsNumber);
+					Log.d("SD", "ToBody:" + toBase64);
+
+					SmsManager sm = SmsManager.getDefault();
+					sm.sendTextMessage(smsNumber, null, toBase64, null, null);
 
 					updateStatus(strRet);
 
@@ -785,22 +806,36 @@ public class SmartSD extends Activity {
 	}
 
 	private String decryptMessage(String message) {
-		// TODO
-		return null;
+		// do decrypt here..have a try..
+		byte[] fromBase64 = Base64.decode(message);
+
+		byte[] toDe = new byte[512];
+		for (int i = 0; i < fromBase64.length; i++) {
+			if (i < fromBase64.length) {
+				toDe[i] = fromBase64[i];
+			}
+		}
+
+		for (int i = 0; i < (512 - fromBase64.length - 16) / 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				toDe[i * 8 + j + fromBase64.length] = (byte) (_l_[j] & 0xff);
+			}
+		}
+		for (int i = 0; i < 16; i++) {
+			toDe[i + 496] = 0x00;
+		}
+		return decryptData(toDe);
 	}
 
 	private String decryptData(byte[] smsbody) {
 		strRet.delete(0, strRet.length());
 		try {
-			byte[] cSendData = new byte[512];
-			for (int i = 0; i < (smsbody.length < cSendData.length ? smsbody.length
-					: cSendData.length); i++) {
-				cSendData[i] = smsbody[i];
-			}
 
 			char[] c = new char[512];
-			for (int i = 0; i < cSendData.length; i++)
-				c[i] = (char) (0xFF & cSendData[i]);
+			for (int i = 0; i < c.length; i++)
+				c[i] = (char) (0xFF & smsbody[i]);
+
+			Log.d("SD", "ToDeData:" + To_Hex(c, 512));
 
 			cIndex = (char) Integer
 					.parseInt(EditTextIndex.getText().toString());
@@ -816,6 +851,9 @@ public class SmartSD extends Activity {
 			do {
 				counter++;
 				cRet = SDLib.InCOMM_SmartSDCard_GetData(cGetData);
+				for (int i = 0; i < cGetData.length; i++)
+					c[i] = (char) (0xFF & cGetData[i]);
+				// Log.d("SDM", "cGetData: " + To_Hex(c, 512));
 				strRet.append("cretget:" + Integer.toHexString(cRet) + "\n");
 			} while (memcmp(outbuf, ITRUST, 6) == 0);
 
@@ -824,9 +862,16 @@ public class SmartSD extends Activity {
 			cRet = SDLib.InCOMM_SmartSDCard_SendAPDUCommand(5, SPI_END_500);
 			cRet = SDLib.InCOMM_SmartSDCard_GetAPDUCommand(intAPDU_len, cData);
 
-			//String smsBody = To_Hex(cGetData, 512);
-			String smsBody = new String(cGetData);
-			//Log.d("SDM", sms)
+			int leng = 0;
+			for (int i = 0; i < 512; i++) {
+				if (cGetData[i] == 0x00) {
+					leng = i;
+					break;
+				}
+			}
+			String smsBody = new String(cGetData, 0, leng);
+
+			Log.d("SDM", "Decrypted:" + smsBody);
 			strRet.append("To send Message:" + smsBody + "\n");
 
 			updateStatus(strRet);
@@ -834,7 +879,7 @@ public class SmartSD extends Activity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return "";
 	}
 
 	private void doAddSmsMesssage(String smsFrom, String smsBody) {

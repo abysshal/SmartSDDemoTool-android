@@ -5,291 +5,304 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
-        android:id="@+id/LinearLayout01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/initial"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Initial" >
-        </Button>
-
-        <Button
-            android:id="@+id/Info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Information" >
-        </Button>
-
-        <Button
-            android:id="@+id/reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reset" >
-        </Button>
-
-        <Button
-            android:id="@+id/format"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Format" >
-        </Button>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Send" >
-        </Button>
-
-        <Button
-            android:id="@+id/get"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Get" >
-        </Button>
-
-        <Button
-            android:id="@+id/getblock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Get Block" >
-        </Button>
-
-        <Button
-            android:id="@+id/access"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Access" >
-        </Button>
-
-        <Button
-            android:id="@+id/handle61"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="H61" >
-        </Button>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/setpps"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Set PPS" >
-        </Button>
-
-        <Button
-            android:id="@+id/end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="End TM" >
-        </Button>
-
-        <Button
-            android:id="@+id/speed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Speed" >
-        </Button>
-
-        <Button
-            android:id="@+id/clear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clear" >
-        </Button>
-
-        <TextView
-            android:id="@+id/textIndex"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Idx:" >
-        </TextView>
-
-        <EditText
-            android:id="@+id/index"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:numeric="integer"
-            android:singleLine="true"
-            android:text="1" >
-        </EditText>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout06"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <Button
-            android:id="@+id/enFixDataLen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EnFixDataLen" >
-        </Button>
-
-        <Button
-            android:id="@+id/sendData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Send Data" >
-        </Button>
-
-        <Button
-            android:id="@+id/getData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Get Data" >
-        </Button>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout05"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" >
-
-        <TextView
-            android:id="@+id/TestTimes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Test Times:" >
-        </TextView>
-
-        <EditText
-            android:id="@+id/EditTextLoopTimes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1000" >
-        </EditText>
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/runapp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Run App" >
-    </Button>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout04"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/CMDLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CMD: " >
-        </TextView>
-
-        <EditText
-            android:id="@+id/CMDEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0020000000" >
-        </EditText>
-
-        <Button
-            android:id="@+id/btnSend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SocketSend" >
-        </Button>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout05"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/smsToLabel1"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:text="To: " >
-        </TextView>
-
-        <EditText
-            android:id="@+id/smsToEditText"
-            android:layout_width="186dp"
-            android:layout_height="wrap_content"
-            android:text="18668269235" >
-
-            <requestFocus />
-        </EditText>
-
-        <Button
-            android:id="@+id/smsBtnSend1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SmsSend" >
-        </Button>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout06"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <TextView
-            android:id="@+id/smsBodyLabel1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Body: " >
-        </TextView>
-
-        <EditText
-            android:id="@+id/smsBodyEditText"
-            android:layout_width="wrap_content"
-            android:layout_height="84dp"
-            android:inputType="textMultiLine|textShortMessage"
-            android:singleLine="false"
-            android:text="hello world~\n -from SmartSD" >
-
-        </EditText>
-
-        <Button
-            android:id="@+id/smsBtnSend2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SmsSend"
-            android:visibility="invisible" >
-        </Button>
-    </LinearLayout>
-
     <ScrollView
         android:id="@+id/ScrollView01"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/showInfo"
+        <LinearLayout
+            android:id="@+id/LinearLayout0"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:gravity="top|left"
-            android:scrollbarStyle="insideInset"
-            android:scrollbars="vertical"
-            android:visibility="visible" >
-        </TextView>
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/LinearLayout01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/initial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Initial" >
+                </Button>
+
+                <Button
+                    android:id="@+id/Info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Information" >
+                </Button>
+
+                <Button
+                    android:id="@+id/reset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reset" >
+                </Button>
+
+                <Button
+                    android:id="@+id/format"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Format" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Send" >
+                </Button>
+
+                <Button
+                    android:id="@+id/get"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get" >
+                </Button>
+
+                <Button
+                    android:id="@+id/getblock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get Block" >
+                </Button>
+
+                <Button
+                    android:id="@+id/access"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Access" >
+                </Button>
+
+                <Button
+                    android:id="@+id/handle61"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="H61" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/setpps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set PPS" >
+                </Button>
+
+                <Button
+                    android:id="@+id/end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="End TM" >
+                </Button>
+
+                <Button
+                    android:id="@+id/speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Speed" >
+                </Button>
+
+                <Button
+                    android:id="@+id/clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clear" >
+                </Button>
+
+                <TextView
+                    android:id="@+id/textIndex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Idx:" >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/index"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numeric="integer"
+                    android:singleLine="true"
+                    android:text="1" >
+                </EditText>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout06"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/enFixDataLen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EnFixDataLen" >
+                </Button>
+
+                <Button
+                    android:id="@+id/sendData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Send Data" >
+                </Button>
+
+                <Button
+                    android:id="@+id/getData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get Data" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/TestTimes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Test Times:" >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/EditTextLoopTimes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1000" >
+                </EditText>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/runapp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Run App" >
+            </Button>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/CMDLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CMD: " >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/CMDEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0020000000" >
+                </EditText>
+
+                <Button
+                    android:id="@+id/btnSend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SocketSend" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/smsToLabel1"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:text="To: " >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/smsToEditText"
+                    android:layout_width="186dp"
+                    android:layout_height="wrap_content"
+                    android:text="18668269235" >
+
+                    <requestFocus />
+                </EditText>
+
+                <Button
+                    android:id="@+id/smsBtnSend1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SmsSend" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout06"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/smsBodyLabel1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Body: " >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/smsBodyEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="84dp"
+                    android:inputType="textMultiLine|textShortMessage"
+                    android:singleLine="false"
+                    android:text="hello world~\n -from SmartSD" >
+                </EditText>
+
+                <Button
+                    android:id="@+id/smsBtnSend2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SmsSend"
+                    android:visibility="invisible" >
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout07"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/showInfo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="top|left"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:visibility="visible" >
+                </TextView>
+            </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>
